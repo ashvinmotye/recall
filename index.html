@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f6f3ff" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Recall" />
+  <meta name="description" content="Recall — a fast, focused visual memory game." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/icon-180.png" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Recall</title>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">MEMORY TRAINING</p>
+        <h1>Recall</h1>
+      </div>
+      <button class="icon-button" id="soundToggle" aria-label="Toggle sound" title="Toggle sound">
+        <span aria-hidden="true" id="soundIcon">◉</span>
+      </button>
+    </header>
+
+    <section id="homeView" class="view active" aria-labelledby="homeTitle">
+      <div class="hero-card glass-card">
+        <div class="orb-wrap" aria-hidden="true">
+          <div class="memory-orb">
+            <div class="orb-core">
+              <span id="heroScore">0</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-copy">
+          <p class="kicker">BEST RECALL</p>
+          <h2 id="homeTitle">How much can you hold?</h2>
+          <p>Watch the grid, remember the glowing tiles, then tap them back from memory.</p>
+        </div>
+      </div>
+
+      <section class="stats-grid" aria-label="Recall statistics">
+        <article class="stat-card glass-card">
+          <span class="stat-label">Best score</span>
+          <strong id="bestScore">0</strong>
+        </article>
+        <article class="stat-card glass-card">
+          <span class="stat-label">Best streak</span>
+          <strong id="bestStreak">0</strong>
+        </article>
+        <article class="stat-card glass-card">
+          <span class="stat-label">Games</span>
+          <strong id="gamesPlayed">0</strong>
+        </article>
+      </section>
+
+      <section class="mode-card glass-card">
+        <div class="mode-heading">
+          <div>
+            <span class="mode-pill">FLASH</span>
+            <h3>Memory Grid</h3>
+          </div>
+          <span class="difficulty-copy">Starts at 3 × 3</span>
+        </div>
+        <p>Tiles flash together. Remember every position. Each correct round gets harder.</p>
+        <button class="primary-button" id="startButton">Start Recall</button>
+      </section>
+
+      <p class="microcopy">Your scores stay on this device.</p>
+    </section>
+
+    <section id="gameView" class="view" aria-labelledby="roundTitle">
+      <div class="game-topline">
+        <button class="back-button" id="quitButton" aria-label="Quit game">←</button>
+        <div class="round-copy">
+          <span id="phaseLabel">GET READY</span>
+          <strong id="roundTitle">Round 1</strong>
+        </div>
+        <div class="score-chip"><span>Score</span><strong id="liveScore">0</strong></div>
+      </div>
+
+      <section class="streak-row" aria-label="Current game statistics">
+        <div><span>Perfect Recall</span><strong id="liveStreak">0</strong></div>
+        <div><span>Remember</span><strong id="targetCount">2 tiles</strong></div>
+      </section>
+
+      <div class="game-stage glass-card">
+        <div id="countdown" class="countdown" aria-live="polite"></div>
+        <div id="grid" class="memory-grid" role="grid" aria-label="Memory grid"></div>
+        <p id="gameHint" class="game-hint" aria-live="polite">Focus on the grid.</p>
+      </div>
+
+      <div class="progress-track" aria-hidden="true"><div id="roundProgress" class="progress-fill"></div></div>
+    </section>
+
+    <section id="resultView" class="view" aria-labelledby="resultTitle">
+      <div class="result-card glass-card">
+        <div class="result-mark" id="resultMark">✦</div>
+        <p class="kicker">RUN COMPLETE</p>
+        <h2 id="resultTitle">Recall Score</h2>
+        <div class="result-score" id="resultScore">0</div>
+        <p id="resultMessage">Nice run.</p>
+
+        <div class="result-stats">
+          <div><span>Rounds</span><strong id="resultRounds">0</strong></div>
+          <div><span>Best streak</span><strong id="resultStreak">0</strong></div>
+          <div><span>Peak grid</span><strong id="resultGrid">3 × 3</strong></div>
+        </div>
+
+        <button class="primary-button" id="playAgainButton">Play Again</button>
+        <button class="secondary-button" id="homeButton">Back Home</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
