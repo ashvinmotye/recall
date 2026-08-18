@@ -42,3 +42,9 @@ Serve the folder from any static host (GitHub Pages, Netlify, local web server, 
 ## v2.8
 - Removed the border from `.orb-core`.
 - Added a softly animated internal glow that drifts around the orb while the score remains stationary.
+
+
+## v2.9
+- Reworked the Best Recall hero for phone layouts: the orb is centered with the copy stacked underneath.
+- The orb now uses explicit equal width and height values instead of relying on aspect-ratio, preventing mobile distortion.
+- Kept the moving internal glow and borderless orb core from v2.8.

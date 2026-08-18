@@ -1,4 +1,4 @@
-const CACHE = 'recall-v2.8.0';
+const CACHE = 'recall-v2.9.0';
 const ASSETS = [
   './','./index.html','./styles.css','./app.js','./manifest.webmanifest',
   './icons/icon-180.png','./icons/icon-192.png','./icons/icon-512.png','./icons/icon-512-maskable.png'
