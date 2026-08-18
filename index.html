@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#f6f3ff" />
+  <meta name="theme-color" id="themeColorMeta" content="#f6f3ff" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="Recall" />
-  <meta name="description" content="Recall — a fast, focused visual memory game." />
+  <meta name="description" content="Recall — five fast memory games in one focused PWA." />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="apple-touch-icon" href="icons/icon-180.png" />
   <link rel="icon" href="icons/icon-192.png" />
@@ -21,76 +21,107 @@
         <p class="eyebrow">MEMORY TRAINING</p>
         <h1>Recall</h1>
       </div>
-      <button class="icon-button" id="soundToggle" aria-label="Toggle sound" title="Toggle sound">
-        <span aria-hidden="true" id="soundIcon">◉</span>
-      </button>
+      <div class="topbar-actions">
+        <button class="icon-button" id="themeToggle" aria-label="Switch to Twilight mode" aria-pressed="false" title="Light / Twilight theme">
+          <span aria-hidden="true" id="themeIcon">☾</span>
+        </button>
+        <button class="icon-button" id="soundToggle" aria-label="Toggle sound" title="Toggle sound">
+          <span aria-hidden="true" id="soundIcon">◉</span>
+        </button>
+      </div>
     </header>
 
     <section id="homeView" class="view active" aria-labelledby="homeTitle">
       <div class="hero-card glass-card">
         <div class="orb-wrap" aria-hidden="true">
-          <div class="memory-orb">
-            <div class="orb-core">
-              <span id="heroScore">0</span>
-            </div>
-          </div>
+          <div class="memory-orb"><div class="orb-core"><span id="heroScore">0</span></div></div>
         </div>
         <div class="hero-copy">
           <p class="kicker">BEST RECALL</p>
-          <h2 id="homeTitle">How much can you hold?</h2>
-          <p>Watch the grid, remember the glowing tiles, then tap them back from memory.</p>
+          <h2 id="homeTitle">Pick a memory lane.</h2>
+          <p>Visual patterns, sequences, numbers, matching and change detection — each one trains recall differently.</p>
         </div>
       </div>
 
       <section class="stats-grid" aria-label="Recall statistics">
-        <article class="stat-card glass-card">
-          <span class="stat-label">Best score</span>
-          <strong id="bestScore">0</strong>
+        <article class="stat-card glass-card"><span class="stat-label">Best score</span><strong id="bestScore">0</strong></article>
+        <article class="stat-card glass-card"><span class="stat-label">Best streak</span><strong id="bestStreak">0</strong></article>
+        <article class="stat-card glass-card"><span class="stat-label">Games</span><strong id="gamesPlayed">0</strong></article>
+      </section>
+
+      <div class="section-heading">
+        <div><p class="kicker">GAME MODES</p><h2>Memory Arcade</h2></div>
+        <span>5 modes</span>
+      </div>
+
+      <section class="mode-grid" aria-label="Game modes">
+        <article class="mode-card glass-card">
+          <div class="mode-top"><span class="mode-icon" aria-hidden="true">✦</span><span class="mode-pill">FLASH</span></div>
+          <h3>Memory Grid</h3>
+          <p>Tiles flash together. Rebuild the pattern from memory.</p>
+          <div class="mode-meta"><span>Best <strong data-best="flash">0</strong></span><span>3×3 → 6×6</span></div>
+          <button class="secondary-play mode-start" data-mode="flash">Play Flash</button>
         </article>
-        <article class="stat-card glass-card">
-          <span class="stat-label">Best streak</span>
-          <strong id="bestStreak">0</strong>
+
+        <article class="mode-card glass-card">
+          <div class="mode-top"><span class="mode-icon" aria-hidden="true">↝</span><span class="mode-pill">SEQUENCE</span></div>
+          <h3>Follow the Pulse</h3>
+          <p>Tiles light one by one. Repeat the exact order.</p>
+          <div class="mode-meta"><span>Best <strong data-best="sequence">0</strong></span><span>Order matters</span></div>
+          <button class="secondary-play mode-start" data-mode="sequence">Play Sequence</button>
         </article>
-        <article class="stat-card glass-card">
-          <span class="stat-label">Games</span>
-          <strong id="gamesPlayed">0</strong>
+
+        <article class="mode-card glass-card">
+          <div class="mode-top"><span class="mode-icon" aria-hidden="true">#</span><span class="mode-pill">NUMBERS</span></div>
+          <h3>Digit Hold</h3>
+          <p>Memorise a number, then type it back after it disappears.</p>
+          <div class="mode-meta"><span>Best <strong data-best="numbers">0</strong></span><span>3 → 12 digits</span></div>
+          <button class="secondary-play mode-start" data-mode="numbers">Play Numbers</button>
+        </article>
+
+        <article class="mode-card glass-card">
+          <div class="mode-top"><span class="mode-icon" aria-hidden="true">◫</span><span class="mode-pill">PAIRS</span></div>
+          <h3>Pair Sprint</h3>
+          <p>Clear three boards with as few flips as possible.</p>
+          <div class="mode-meta"><span>Best <strong data-best="pairs">0</strong></span><span>3 boards</span></div>
+          <button class="secondary-play mode-start" data-mode="pairs">Play Pairs</button>
+        </article>
+
+        <article class="mode-card glass-card">
+          <div class="mode-top"><span class="mode-icon" aria-hidden="true">△</span><span class="mode-pill">CHANGE</span></div>
+          <h3>What Changed?</h3>
+          <p>Study the symbols. One changes. Find the altered tile.</p>
+          <div class="mode-meta"><span>Best <strong data-best="change">0</strong></span><span>Spot the shift</span></div>
+          <button class="secondary-play mode-start" data-mode="change">Play Change</button>
         </article>
       </section>
 
-      <section class="mode-card glass-card">
-        <div class="mode-heading">
-          <div>
-            <span class="mode-pill">FLASH</span>
-            <h3>Memory Grid</h3>
-          </div>
-          <span class="difficulty-copy">Starts at 3 × 3</span>
-        </div>
-        <p>Tiles flash together. Remember every position. Each correct round gets harder.</p>
-        <button class="primary-button" id="startButton">Start Recall</button>
-      </section>
-
-      <p class="microcopy">Your scores stay on this device.</p>
+      <p class="microcopy">All scores stay on this device. Your original Flash best is preserved.</p>
     </section>
 
     <section id="gameView" class="view" aria-labelledby="roundTitle">
       <div class="game-topline">
         <button class="back-button" id="quitButton" aria-label="Quit game">←</button>
-        <div class="round-copy">
-          <span id="phaseLabel">GET READY</span>
-          <strong id="roundTitle">Round 1</strong>
-        </div>
+        <div class="round-copy"><span id="phaseLabel">GET READY</span><strong id="roundTitle">Round 1</strong></div>
         <div class="score-chip"><span>Score</span><strong id="liveScore">0</strong></div>
       </div>
 
       <section class="streak-row" aria-label="Current game statistics">
-        <div><span>Perfect Recall</span><strong id="liveStreak">0</strong></div>
-        <div><span>Remember</span><strong id="targetCount">2 tiles</strong></div>
+        <div><span id="hudLabel1">Perfect Recall</span><strong id="hudValue1">0</strong></div>
+        <div><span id="hudLabel2">Remember</span><strong id="hudValue2">2 tiles</strong></div>
       </section>
 
-      <div class="game-stage glass-card">
+      <div class="game-stage glass-card" id="gameStage">
         <div id="countdown" class="countdown" aria-live="polite"></div>
-        <div id="grid" class="memory-grid" role="grid" aria-label="Memory grid"></div>
-        <p id="gameHint" class="game-hint" aria-live="polite">Focus on the grid.</p>
+        <div id="grid" class="memory-grid" role="grid" aria-label="Memory game grid"></div>
+
+        <div id="numberGame" class="number-game hidden">
+          <div class="number-display" id="numberDisplay" aria-live="polite"></div>
+          <div class="digit-entry" id="digitEntry" aria-label="Your recalled number"></div>
+          <div class="keypad" id="keypad" aria-label="Number keypad"></div>
+        </div>
+
+        <p id="gameHint" class="game-hint" aria-live="polite">Focus.</p>
       </div>
 
       <div class="progress-track" aria-hidden="true"><div id="roundProgress" class="progress-fill"></div></div>
@@ -99,15 +130,15 @@
     <section id="resultView" class="view" aria-labelledby="resultTitle">
       <div class="result-card glass-card">
         <div class="result-mark" id="resultMark">✦</div>
-        <p class="kicker">RUN COMPLETE</p>
+        <p class="kicker" id="resultKicker">RUN COMPLETE</p>
         <h2 id="resultTitle">Recall Score</h2>
         <div class="result-score" id="resultScore">0</div>
         <p id="resultMessage">Nice run.</p>
 
         <div class="result-stats">
-          <div><span>Rounds</span><strong id="resultRounds">0</strong></div>
-          <div><span>Best streak</span><strong id="resultStreak">0</strong></div>
-          <div><span>Peak grid</span><strong id="resultGrid">3 × 3</strong></div>
+          <div><span id="resultLabel1">Rounds</span><strong id="resultValue1">0</strong></div>
+          <div><span id="resultLabel2">Best streak</span><strong id="resultValue2">0</strong></div>
+          <div><span id="resultLabel3">Peak grid</span><strong id="resultValue3">3 × 3</strong></div>
         </div>
 
         <button class="primary-button" id="playAgainButton">Play Again</button>

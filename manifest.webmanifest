@@ -1,7 +1,7 @@
 {
   "name": "Recall",
   "short_name": "Recall",
-  "description": "A fast, focused visual memory game.",
+  "description": "Five fast memory games: Flash, Sequence, Numbers, Pairs and What Changed — with light and Twilight themes.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
