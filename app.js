@@ -83,9 +83,9 @@
     const dark = settings.theme === 'dark';
     document.documentElement.dataset.theme = dark ? 'dark' : 'light';
     els.themeIcon.textContent = dark ? '☀' : '☾';
-    els.themeToggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to Twilight mode');
+    els.themeToggle.setAttribute('aria-label', dark ? 'Switch to Arctic Depth light mode' : 'Switch to Arctic Depth dark mode');
     els.themeToggle.setAttribute('aria-pressed', dark ? 'true' : 'false');
-    els.themeColorMeta.setAttribute('content', dark ? '#322f42' : '#f6f3ff');
+    els.themeColorMeta.setAttribute('content', dark ? '#193546' : '#e9f8fb');
   }
 
   function refreshHome() {
@@ -416,7 +416,7 @@
   els.playAgainButton.addEventListener('click', () => startGame(state.mode));
   els.homeButton.addEventListener('click', () => { clearTimers(); showView(els.homeView); refreshHome(); });
   els.quitButton.addEventListener('click', quitGame);
-  els.themeToggle.addEventListener('click', () => { settings.theme = settings.theme === 'dark' ? 'light' : 'dark'; persistSettings(); applyTheme(); toast(settings.theme === 'dark' ? 'Twilight mode' : 'Light mode'); });
+  els.themeToggle.addEventListener('click', () => { settings.theme = settings.theme === 'dark' ? 'light' : 'dark'; persistSettings(); applyTheme(); toast(settings.theme === 'dark' ? 'Arctic Depth dark' : 'Arctic Depth light'); });
   els.soundToggle.addEventListener('click', () => { settings.sound=!settings.sound; persistSettings(); refreshHome(); if(settings.sound) beep(620,.05); toast(settings.sound?'Sound on':'Sound off'); });
   document.addEventListener('visibilitychange', () => { if (document.hidden && els.gameView.classList.contains('active') && !state.ended) quitGame(); });
 
